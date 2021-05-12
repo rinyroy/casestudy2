@@ -48,7 +48,7 @@ var booklist = [
     title:"The Catcher in the Rye",
     author:"J.D. Salinger",
     genre:"Coming of Age ",
-    img:"the catcher in the rye-J.D Salinger.jpg",
+    img:"the catcher in the Rye-J.D Salinger.jpg",
     authorimg:"J.D Salinger.jpg",
     authorinfo:"Jerome David Salinger ( January 1, 1919 – January 27, 2010) was an American writer best known for his 1951 novel The Catcher in the Rye. Before its publication, Salinger published several short stories in Story magazine and served in World War II. In 1948, his critically acclaimed story 'A Perfect Day for Bananafish' appeared in The New Yorker, which published much of his later work.The Catcher in the Rye was an immediate popular success. Salinger's depiction of adolescent alienation and loss of innocence in the protagonist Holden Caulfield was influential, especially among adolescent readers.The novel was widely read and controversial,and its success led to public attention and scrutiny. ",
     info:"The Catcher in the Rye is a novel by J. D. Salinger, partially published in serial form in 1945–1946 and as a novel in 1951. It was originally intended for adults but is often read by adolescents for its themes of angst, alienation, and as a critique on superficiality in society. It has been translated widely. "
