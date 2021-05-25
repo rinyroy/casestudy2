@@ -89,16 +89,20 @@
           <div class="row">    
             <br>
             <div class="col-md-2 col-sm-3 text-center">
-              <a class="story-title" href="#"><img alt="" src="/images/<%=booklist[i].img%>" style="width:100px;height:100px" class="img-circle"></a>
+              <a class="story-title" href="#"><img alt="" src="/images/<%=booklist[i].image%>" style="width:100px;height:100px" class="img-circle"></a>
             </div>
             <div class="col-md-10 col-sm-9">
               <h3><%=booklist[i].title%></h3>
               <div class="row">
                 <div class="col-xs-9">
-                  <h4><span class="label label-default"><%=booklist[i].author%></span></h4><h4>
-                  <small style="font-family:courier,'new courier';" class="text-muted"><%=booklist[i].genre%>  • <a href="/books/<%=i%>" class="text-muted">Read More</a></small>
+                  <h4><span class="label label-default"><%=booklist[i].author%></span></h4><h4> 
+                  <small style="font-family:courier,'new courier';" class="text-muted"><%=booklist[i].genre%>  • <a href="/books/<%=booklist[i]._id%>" class="text-muted">Read More</a></small>
                   </h4></div>
-                <div class="col-xs-3"></div>
+                <div class="col-xs-3">
+                  <a href="updatebook"class="btn btn-primary pull-right btnNext">Update</a>
+                  <a href="deletebook" class="btn btn-primary pull-right btnNext">Delete</a><br>
+                  
+                </div>
               </div>
               <br><br>
             </div>

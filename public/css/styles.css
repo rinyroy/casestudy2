@@ -8,11 +8,14 @@
 body {
   padding-top:50px;
   color:#646464;
-  background-color:#efefef;
+  background-color:cornflowerblue;
+  background-image: url(/public/images/desert.jpg);
+
+  
 }
 
 h1,h2,h3,.highlight,.navbar a,#masthead h4 {
-  font-family:'Oswald',arial narrow,sans-serif;
+  font-family: 'Oswald',arial narrow,sans-serif;
 }
 
 footer {

@@ -91,20 +91,20 @@
 
             <h1>ADD BOOKS</h1>
             <p>Add new books to your reading list. Enjoy Reading.</p>
-            <form class="row g-3" onsubmit="return validate()">
+            <form class="row g-3"  method = "POST" onsubmit="return validate()"  action = "/addbook/add">
               <div class="col-md-6">
                 <label for="Book Name" class="form-label">Book Name</label>
-                <input type="text" required class="form-control" id="Book Name">
+                <input type="text" required class="form-control" id="title" name="title">
               </div>
               <div class="col-md-6">
-                <label for="Author Name" class="form-label">Author Name</label>
-                <input type="text" required class="form-control" id="Author Name">
+                <label for="Author Name" class="form-label" id="author" name="author">Author Name</label>
+                <input type="text" required class="form-control" id="author">
               </div>
               <hr>
               <vr>
               <div class="col-md-12">
-                <label for="Author image" class="form-label">Book Image</label>
-                <input type="file" class="form-control" id="input" onChange="showFiles()" accept="image/*">
+                <label for="Book image" class="form-label">Book Image</label>
+                <input type="file" class="form-control" id="image" name="image" onChange="showFiles()" accept="image/*">
                 <img id="preview">
               </div>
               
@@ -112,7 +112,7 @@
               
               <div class="col-md-4">
                 <label for="inputState" class="form-label">Genre</label>
-                <select id="inputState" class="form-select">
+               <select id="genre" class="form-select" name="genre">
                   <option selected>Choose...</option>
                   <option>Novel</option>
                   <option>Story</option>
@@ -122,7 +122,7 @@
                   <option>Fantasy</option>
                 </select>
               </div>
-              <div class="col-md-4">
+              <!--<div class="col-md-4">
                 <label for="inputZip" class="form-label">No. of copies</label>
                 <input type="text" class="form-control" id="inputZip">
               </div>
@@ -133,9 +133,9 @@
                     Add to stack
                   </label>
                 </div>
-              </div>
+              </div>-->
               <div class="col-12">
-                <button type="submit" class="btn btn-primary">Add More</button>
+                <button type="submit" class="btn btn-primary">Add</button>
               </div>
             </form>
           

@@ -1,16 +1,41 @@
 const express = require("express");
-const booksRouter = express.Router();
-const authorsRouter = express.Router();
-const loginRouter = express.Router();
-const signupRouter = express.Router();
-const addbookRouter = express.Router();
-const addauthorRouter = express.Router();
-const port = process.env.PORT || 5014;
+
+const nav=[
+    {
+        link:'/books',name:'Books'
+    },
+    {
+        link:'/authors',name:'Authors'
+    },
+    {
+        link:'/login',name:'Log In'
+    },
+    {
+        link:'/signup',name:'Sign Up'
+    },
+    {
+        link:'/addbook',name:'Add Book'
+    },
+    {
+        link:'/addauthor',name:'Add Author'
+    }]
+const booksRouter = require("./src/routes/bookRoutes")(nav);
+const authorsRouter = require("./src/routes/authorRoutes")(nav);
+const loginRouter = require("./src/routes/loginRoutes")(nav);
+const signupRouter = require("./src/routes/signupRoutes")(nav);
+const addbookRouter = require("./src/routes/addbookRoutes")(nav);
+const addauthorRouter = require("./src/routes/addauthorRoutes")(nav);
+const updatebookRouter = require("./src/routes/updatebookRoutes")(nav);
+//const updateauthorRouter = require("./src/routes/updateauthorRoutes");
+const deletebookRouter = require("./src/routes/deletebookRoutes")(nav);
+//const deleteauthorRouter = require("./src/routes/deleteauthorRoutes");
+const port = process.env.PORT || 5016;
+
 
 
 //init express
 const app = new express();
-
+app.use(express.urlencoded({extended:true}));
 app.use(express.static('./public'));
 app.set('view engine','ejs');
 app.set('views','./src/views');
@@ -20,6 +45,10 @@ app.use('/login',loginRouter);
 app.use('/signup',signupRouter);
 app.use('/addbook',addbookRouter);
 app.use('/addauthor',addauthorRouter);
+app.use('/updatebook',updatebookRouter);
+//app.use('/updateauthor',updateauthorRouter);
+app.use('/deletebook',deletebookRouter);
+//app.use('/deleteauthor',deleteauthorRouter);
 app.use(express.static('./public'));
 
 var booklist = [
@@ -74,95 +103,27 @@ var booklist = [
 }
 
 ]
-
 //create your endpoints/route handlers
 app.get('/',function(req,res){
     res.render("index", 
     {
-        nav:[{link:'/books',name:'Books'},{link:'/authors',name:'Authors'},{link:'/login',name:'Log In'},{link:'/signup',name:'Sign Up'},{link:'/addbook',name:'Add Book'},{link:'/addauthor',name:'Add Author'}],
+        nav,
         title:'Library',
         booklist
     });
 });
 
 
-booksRouter.get('/',function(req,res){
-    res.render("books",
-    {
-        nav:[{link:'/books',name:'Books'},{link:'/authors',name:'Authors'},{link:'/login',name:'Log In'},{link:'/signup',name:'Sign Up'},{link:'/addbook',name:'Add Book'},{link:'/addauthor',name:'Add Author'}],
-        title:'Library books',
-        booklist
-    
-        
-    });
-});
 
 
 
-booksRouter.get('/:id',function(req,res){   
-    const id = req.params.id    
-    res.render('book',{
-            nav:[{link:'/books',name:'Books'},{link:'/authors',name:'Authors'},{link:'/login',name:'Log In'},{link:'/signup',name:'Sign Up'},{link:'/addbook',name:'Add Book'},{link:'/addauthor',name:'Add Author'}],
-            title:'Book info',
-            book: booklist[id]
-        });
-        console.log("Single Book");
-});
-
-authorsRouter.get('/',function(req,res){
-    res.render("authors",
-    {
-        nav:[{link:'/books',name:'Books'},{link:'/authors',name:'Authors'},{link:'/login',name:'Log In'},{link:'/signup',name:'Sign Up'},{link:'/addbook',name:'Add Book'},{link:'/addauthor',name:'Add Author'}],
-        title:'Authors',
-        booklist        
-    });
-});
-
-authorsRouter.get('/:id',function(req,res){   
-    const id = req.params.id    
-    res.render('author',{
-            nav:[{link:'/books',name:'Books'},{link:'/authors',name:'Authors'},{link:'/login',name:'Log In'},{link:'/signup',name:'Sign Up'},{link:'/addbook',name:'Add Book'},{link:'/addauthor',name:'Add Author'}],
-            title:'Author info',
-            book: booklist[id]
-        });
-        console.log("Single Author");
-});
 
 
-loginRouter.get('/',function(req,res){
-    res.render("login",
-    {
-        nav:[{link:'/books',name:'Books'},{link:'/authors',name:'Authors'},{link:'/login',name:'Log In'},{link:'/signup',name:'Sign Up'},{link:'/addbook',name:'Add Book'},{link:'/addauthor',name:'Add Author'}],
-        title:'Log In',
-        booklist
-                
-    });
-});
 
-signupRouter.get('/',function(req,res){
-    res.render("signup",
-    {
-        nav:[{link:'/books',name:'Books'},{link:'/authors',name:'Authors'},{link:'/login',name:'Log In'},{link:'/signup',name:'Sign Up'},{link:'/addbook',name:'Add Book'},{link:'/addauthor',name:'Add Author'}],
-        title:'Sign Up'
-                
-    });
-});
 
-addbookRouter.get('/',function(req,res){
-    res.render("addbook",
-    {
-        nav:[{link:'/books',name:'Books'},{link:'/authors',name:'Authors'},{link:'/login',name:'Log in'},{link:'/signup',name:'Sign Up'},{link:'/addbook',name:'Add Book'},{link:'/addauthor',name:'Add Author'}],
-        title:'Add Book'
-                
-    });
-});
 
-addauthorRouter.get('/',function(req,res){
-    res.render("addauthor",
-    {
-        nav:[{link:'/books',name:'Books'},{link:'/authors',name:'Authors'},{link:'/login',name:'Log In'},{link:'/signup',name:'Sign Up'},{link:'/addbook',name:'Add Book'},{link:'/addauthor',name:'Add Author'}],
-        title:'Add Author'
-                
-    });
-});
+
+
+
+
 app.listen(port,()=>{console.log("Server Ready at " +port)});
